@@ -1,5 +1,4 @@
 import React from "react"
-
 import {
   Card,
   CardImg,
@@ -10,13 +9,14 @@ import {
   ListGroup,
   ListGroupItemText
 } from "reactstrap"
+import { Breadcrumb, BreadcrumbItem } from "reactstrap"
+import { Link } from "react-router-dom"
 
 const RenderDish = ({ dish }) => {
-  const dishImg = "https://source.unsplash.com/hTR1XPtTo_k/800x600"
   if (dish != null) {
     return (
       <Card>
-        <CardImg width="100%" src={dishImg} alt={dish.name} />
+        <CardImg width="100%" src={dish.image} alt={dish.name} />
         <CardBody>
           <CardTitle>{dish.name}</CardTitle>
           <CardText>{dish.description}</CardText>
@@ -28,15 +28,16 @@ const RenderDish = ({ dish }) => {
   }
 }
 
-const RenderComments = ({ dish }) => {
-  let comments = null
-  if (dish != null && dish.comments != null) {
-    comments = dish.comments.map(com => {
+const RenderComments = props => {
+  let dishComments = null
+  if (props.comments !== null) {
+    dishComments = props.comments.map(com => {
       // console.log(com.comment)
       return (
         <ListGroupItem key={com.id}>
           <ListGroupItemText>
-            <p>{com.comment}</p>
+            <span>{com.comment}</span>
+            <br />
             --- {com.author}{" "}
             <span>
               {new Intl.DateTimeFormat("en-US", {
@@ -50,18 +51,29 @@ const RenderComments = ({ dish }) => {
       )
     })
   }
-  return <ListGroup>{comments}</ListGroup>
+  return <ListGroup>{dishComments}</ListGroup>
 }
 
 const Dishdetail = props => {
   return (
     <div className="container">
       <div className="row">
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/home">HOME</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <Link to="/menu">MENU</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>{props.dish[0].name}</BreadcrumbItem>
+        </Breadcrumb>
+      </div>
+      <div className="row">
         <div className="col-12 col-md-5 m-1">
-          <RenderDish dish={props.selectedDish} />
+          <RenderDish dish={props.dish[0]} />
         </div>
         <div className="col-12 col-md-5 m-1">
-          <RenderComments dish={props.selectedDish} />
+          <RenderComments comments={props.comments} />
         </div>
       </div>
     </div>
