@@ -48,7 +48,7 @@ export const DISHES = [
       "A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms"
   },
   {
-    id: 2,
+    id: 4,
     name: "Vadonut",
     image:
       "https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg?auto=compress&cs=tinysrgb&h=350",
@@ -60,7 +60,7 @@ export const DISHES = [
       "A quintessential ConFusion experience, is it a vada or is it a donut?"
   },
   {
-    id: 3,
+    id: 5,
     name: "ElaiCheese Cake",
     image:
       "https://images.pexels.com/photos/842545/pexels-photo-842545.jpeg?auto=compress&cs=tinysrgb&h=350",
@@ -72,7 +72,7 @@ export const DISHES = [
       "A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms"
   },
   {
-    id: 0,
+    id: 6,
     name: "Uthappizza",
     image:
       "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&h=350",
@@ -84,7 +84,7 @@ export const DISHES = [
       "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer."
   },
   {
-    id: 1,
+    id: 7,
     name: "Zucchipakoda",
     image:
       "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&h=350",
@@ -96,7 +96,7 @@ export const DISHES = [
       "Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce"
   },
   {
-    id: 0,
+    id: 8,
     name: "Uthappizza",
     image:
       "https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&h=350",
