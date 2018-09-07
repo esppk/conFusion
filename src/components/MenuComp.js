@@ -9,6 +9,7 @@ import {
   BreadcrumbItem
 } from "reactstrap"
 import { Link } from "react-router-dom"
+import { Loading } from "./LoadingComp"
 
 function RenderMenuItem({ dish }) {
   return (
@@ -24,29 +25,47 @@ function RenderMenuItem({ dish }) {
 }
 
 const Menu = props => {
-  const menu = props.dishes.map(dish => {
+  const menu = props.dishes.dishes.map(dish => {
     return <RenderMenuItem key={dish.id} dish={dish} />
   })
 
-  return (
-    <div className="container">
-      <div className="row">
-        <Breadcrumb>
-          <BreadcrumbItem>
-            <Link to="/home">HOME</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem active>Menu</BreadcrumbItem>
-        </Breadcrumb>
-        <div className="col-12">
-          <h3>MENU</h3>
-          <hr />
+  if (props.dishes.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
         </div>
       </div>
-      <div className="row">
-        <CardColumns>{menu}</CardColumns>
+    )
+  } else if (props.dishes.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.dishes.errMess}</h4>
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div className="container">
+        <div className="row">
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/home">HOME</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>Menu</BreadcrumbItem>
+          </Breadcrumb>
+          <div className="col-12">
+            <h3>MENU</h3>
+            <hr />
+          </div>
+        </div>
+        <div className="row">
+          <CardColumns>{menu}</CardColumns>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default Menu
